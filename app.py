@@ -110,7 +110,7 @@ def upload_pdf(file):
             doc = loader.load()
 
             #  extract chunks
-            text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=10, length_function = len)
             texts = text_splitter.split_documents(doc)
         
             texts = [i.page_content for i in texts]
